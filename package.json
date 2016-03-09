@@ -1,0 +1,32 @@
+{
+  "name": "summit-view",
+  "version": "0.0.1",
+  "description": "Dashboard.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dashboard"
+  ],
+  "author": "Jens Nilsson <jens@jensnilsson.nu>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-stylus": "^2.3.1",
+    "masonry-layout": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/summit-view/summit-view.git"
+  },
+  "bugs": {
+    "url": "https://github.com/summit-view/summit-view/issues"
+  },
+  "homepage": "https://github.com/summit-view/summit-view#readme"
+}

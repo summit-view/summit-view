@@ -1,0 +1,10 @@
+doctype html
+html
+    head
+        title="Summit View"
+        link(rel="stylesheet" href="/theme/style.css")
+    body
+        #container
+            each panel in panels
+                div.panel.panel1x1(data-panel="#{panel.name}").
+                    #{panel.name}
