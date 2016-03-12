@@ -10,7 +10,7 @@ More docs coming. In the meantime take a look at [the example app](https://githu
 
 ##Current goals of the project
 
-- [x] Support for moving and resizing tiles, snap-to-grid.
+- [x] Support for moving and resizing panels, snap-to-grid.
 - [ ] Provide a settings API for panels.
 - [ ] Themeable.
 - [ ] Configurable.
