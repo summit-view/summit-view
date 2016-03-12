@@ -10,10 +10,10 @@ More docs coming. In the meantime take a look at [the example app](https://githu
 
 ##Current goals of the project
 
-- [] Support for moving and resizing tiles, snap-to-grid.
-- [] Provide a settings API for panels.
-- [] Themeable.
-- [] Configurable.
+- [x] Support for moving and resizing tiles, snap-to-grid.
+- [ ] Provide a settings API for panels.
+- [ ] Themeable.
+- [ ] Configurable.
 
 ##Inspiration
 Summit view was inspired by the [Status Board by Panic Inc](https://panic.com/statusboard/) and the ongoing [Panic Board project at 24HR Malmö](https://www.24hr.se/projekt/strukturerad-information-via-storskarm/).
