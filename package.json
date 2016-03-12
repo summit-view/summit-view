@@ -13,13 +13,24 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.4",
+    "font-awesome-stylus": "^4.5.0",
     "jade": "^1.11.0",
     "socket.io": "^1.4.5"
   },
   "devDependencies": {
+    "css-loader": "^0.23.1",
+    "draggabilly": "^2.1.0",
+    "file-loader": "^0.8.5",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-stylus": "^2.3.1",
-    "masonry-layout": "^4.0.0"
+    "masonry-layout": "^4.0.0",
+    "packery": "^2.0.0",
+    "style-loader": "^0.13.0",
+    "underscore": "^1.8.3",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-stream": "^3.1.0"
   },
   "repository": {
     "type": "git",

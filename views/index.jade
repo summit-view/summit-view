@@ -2,9 +2,20 @@ doctype html
 html
     head
         title="Summit View"
+        link(rel="stylesheet" href="/dist/styles/style.css")
         link(rel="stylesheet" href="/theme/style.css")
     body
         #container
-            each panel in panels
-                div.panel.panel1x1(data-panel="#{panel.name}").
-                    #{panel.name}
+            .panel-sizer
+            each panel, index in panels
+                div.panel(data-panel="#{panel.id}" data-panel-x="2" data-panel-y="2" tabindex="#{index}")
+                    .content.
+                        #{panel.id}
+                    .configure
+                        .width
+                            i.fa.fa-chevron-left(data-action='compress-width')
+                            i.fa.fa-chevron-right(data-action='expand-width')
+                        .height
+                            i.fa.fa-chevron-up(data-action='compress-height')
+                            i.fa.fa-chevron-down(data-action='expand-height')
+        script(src="/dist/js/app-bundle.js")

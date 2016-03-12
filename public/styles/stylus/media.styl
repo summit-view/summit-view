@@ -1,0 +1,65 @@
+/*
+    Media object
+    +---------+ ~~~~~~~~~~ ~~~~~
+    |         | ~~~~~ ~~~~~ ~~~~
+    |         | ~~~~~~~~~ ~~~~~~
+    |         |
+    +---------+
+
+    <div class="media">
+        <div class="img">
+            <img src="" />
+        </div>
+        <div class="bd">
+            Content
+        </dib>
+    </div>
+
+*/
+.media
+    overflow hidden
+    _overflow visible
+    zoom 1
+    .bd
+        overflow hidden
+        _overflow visible
+        zoom 1
+    .img
+        img
+            display block
+            max-width 100%
+
+/*
+    Flag object
+    +---------+
+    |         | ~~~~ ~~~~~~~~~~~
+    |         | ~~~~~~~ ~~~~~ ~~
+    |         | ~~~~~~~~~~~~
+    +---------+
+
+    <div class="flag">
+        <div class="img">
+            <img src="" />
+        </div>
+        <div class="bd">
+            Content
+        </dib>
+    </div>
+
+*/
+.flag
+    display table
+    width 100%
+    .img
+    .bd
+        display table-cell
+        vertical-align middle
+    .img
+        img
+            display block
+            max-width none
+    .bd
+        width 100%
+    .img70
+        img
+            width 70px
