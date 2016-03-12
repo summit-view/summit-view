@@ -51,7 +51,7 @@ module.exports.theme = function(t) {
     theme = ( t == 'dark' || t == 'light' ) ? __dirname + '/themes/' + t : t;
 };
 
-module.exports.listen = function(port, IOport) {
+module.exports.listen = function(port) {
     app.use('/theme', express.static(theme || __dirname + '/themes/dark'));
     port = port || config.port || 3000;
     console.log('summit listening on port', port);
