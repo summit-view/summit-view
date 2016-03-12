@@ -4,18 +4,22 @@ html
         title="Summit View"
         link(rel="stylesheet" href="/dist/styles/style.css")
         link(rel="stylesheet" href="/theme/style.css")
+        script(src="/socket.io/socket.io.js")
     body
         #container
             .panel-sizer
             each panel, index in panels
                 div.panel(data-panel="#{panel.id}" data-panel-x="2" data-panel-y="2" tabindex="#{index}")
-                    .content.
-                        #{panel.id}
+                    .content
                     .configure
                         .width
-                            i.fa.fa-chevron-left(data-action='compress-width')
-                            i.fa.fa-chevron-right(data-action='expand-width')
+                            i.fa.fa-chevron-left(data-action="compress-width")
+                            i.fa.fa-chevron-right(data-action="expand-width")
                         .height
-                            i.fa.fa-chevron-up(data-action='compress-height')
-                            i.fa.fa-chevron-down(data-action='expand-height')
+                            i.fa.fa-chevron-up(data-action="compress-height")
+                            i.fa.fa-chevron-down(data-action="expand-height")
+        //#toolbar
+            div.toolbar-control(data-action="activate-settings-ui")
+                i.fa.fa-cog.fa-2x
         script(src="/dist/js/app-bundle.js")
+        script(data-main="/dist/js/main" src="/dist/js/vendor/require.min.js")

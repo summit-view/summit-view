@@ -62,13 +62,20 @@ gulp.task('webpack', function() {
         .pipe(gulp.dest('./dist/js'));
 });
 
+gulp.task('mv-js', function () {
+    return gulp.src(['./public/js/**/*', '!./public/js/app.js'])
+        .pipe(gulp.dest('./dist/js'));
+});
+
 gulp.task('watch', function() {
     gulp.watch('themes/**/*.styl', ['themes-css']);
     gulp.watch('public/**/*.styl', ['core-css']);
     gulp.watch('public/js/**/*.js', ['webpack']);
+    gulp.watch(['./public/js/**/*', '!./public/js/app.js'], ['mv-js']);
     gulp.start('themes-css');
     gulp.start('core-css');
     gulp.start('webpack');
+    gulp.start('mv-js');
 });
 
 gulp.task('build', function() {

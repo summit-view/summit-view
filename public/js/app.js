@@ -18,8 +18,10 @@ var initPanelSize = function(panel) {
 
 
 var initPanel = function(panel) {
+    // update the panels size
     initPanelSize(panel);
 
+    // init configuration-controls for the panel
     var configureControls = panel.querySelectorAll('.configure [data-action]');
 
     _.each(configureControls, function(control) {
@@ -111,9 +113,13 @@ var initPanels = function(cb) {
         // overwrite packery item order
         for (var i = 0, ii = storedPanelSettings.length; i < ii; i++ ) {
             tabIndex = storedPanelSettings[i].tabindex;
-            pckry.items[i] = itemsByTabIndex[ tabIndex ];
-            pckry.items[i].element.setAttribute('data-panel-x', storedPanelSettings[i].x);
-            pckry.items[i].element.setAttribute('data-panel-y', storedPanelSettings[i].y);
+            var item = itemsByTabIndex[ tabIndex ];
+
+            if( item ) {
+                pckry.items[i] = item;
+                pckry.items[i].element.setAttribute('data-panel-x', storedPanelSettings[i].x);
+                pckry.items[i].element.setAttribute('data-panel-y', storedPanelSettings[i].y);
+            }
         }
 
         _.each(panels, function(panel) {
@@ -138,3 +144,19 @@ initPanels(function() {
     pckry.on( 'layoutComplete', savePanelSettings );
     pckry.on( 'dragItemPositioned', savePanelSettings );
 });
+
+
+/*var toolbarControls = document.querySelectorAll('#toolbar .toolbar-control');
+
+_.each(toolbarControls, function(control) {
+    control.addEventListener('click', function() {
+        var action = control.getAttribute('data-action');
+
+        console.log(action);
+
+        switch(action) {
+            case 'activate-settings-ui':
+                break;
+        }
+    });
+});*/

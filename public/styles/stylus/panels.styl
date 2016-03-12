@@ -1,5 +1,6 @@
 .panel-sizer
     width ($panelSide)%
+
 .panel
     position absolute
     &:hover
@@ -21,55 +22,53 @@
     &.is-positioning-post-drag
         z-index 2
 
-.content
-.configure
-    position absolute
-    top 0
-    right 0
-    bottom 0
-    left 0
-
-.content
-    justify-content center
-    align-items center
-    display flex
-    overflow hidden
-    transition all .2s
-    margin unit($gutter, 'px')
-
-.configure
-    opacity 0
-    transition opacity .3s ease
-    .width
-    .height
-        background rgba(black, .10)
+    .content
+    .configure
         position absolute
-        margin unit($gutter, 'px')
-        i
-            &:hover
-                background rgba(black, .10)
-                cursor pointer
-    .width
-        width 36px
-        right 0
         top 0
-        bottom 0
-        i
-            width 100%
-            padding 10px 0
-            text-align center
-    .height
-        height 36px
         right 0
-        left 0
         bottom 0
-        margin-right unit($gutter+36, 'px')
-        text-align center
-        i
-            height 100%
-            padding 0 10px
-            &:before
-                line-height 36px
+        left 0
+
+    .content
+        overflow hidden
+        overflow-y scroll
+        transition all .2s
+        margin unit($gutter, 'px')
+
+    .configure
+        opacity 0
+        transition opacity .3s ease
+        .width
+        .height
+            background rgba(black, .10)
+            position absolute
+            margin unit($gutter, 'px')
+            i
+                &:hover
+                    background rgba(black, .10)
+                    cursor pointer
+        .width
+            width 36px
+            right 0
+            top 0
+            bottom 0
+            i
+                width 100%
+                padding 10px 0
+                text-align center
+        .height
+            height 36px
+            right 0
+            left 0
+            bottom 0
+            margin-right unit($gutter+36, 'px')
+            text-align center
+            i
+                height 100%
+                padding 0 10px
+                &:before
+                    line-height 36px
 
 panel(x, y)
     .panel-{x}x{y}
