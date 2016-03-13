@@ -1,0 +1,26 @@
+#settings-overlay
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background rgba(black, .7)
+    display none
+    #settings-container
+        width 50%
+        background white
+        color black
+    input
+        width 100%
+    .button
+        padding 10px 20px
+        border 3px solid black
+        &:hover
+            cursor pointer
+
+.settings-open
+    #settings-overlay
+        display block
+    #container
+        transition filter .3s ease
+        filter blur(6px)

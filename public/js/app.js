@@ -1,6 +1,8 @@
 var _ = require('underscore');
 var Packery = require('packery');
 var Draggabilly = require('draggabilly');
+var getFormData = require('get-form-data');
+var xhr = require('xhr');
 
 var initPanelSize = function(panel) {
     var x = panel.getAttribute('data-panel-x');
@@ -146,17 +148,33 @@ initPanels(function() {
 });
 
 
-/*var toolbarControls = document.querySelectorAll('#toolbar .toolbar-control');
+/**
+ * Settings
+ */
+var saveSettingsControls = document.querySelectorAll('.save-settings-control');
+
+_.each(saveSettingsControls, function(saveSettingsControl) {
+    saveSettingsControl.addEventListener('click', function() {
+        var settingsFor = saveSettingsControl.getAttribute('data-save-settings-for');
+        var data = getFormData(document.querySelector('form#' + settingsFor));
+
+        xhr.post('/' + settingsFor + '/settings', {json: data}, function(err, res) {
+            console.log(res);
+        });
+    });
+});
+
+
+var toolbarControls = document.querySelectorAll('#toolbar .toolbar-control');
 
 _.each(toolbarControls, function(control) {
     control.addEventListener('click', function() {
         var action = control.getAttribute('data-action');
 
-        console.log(action);
-
         switch(action) {
             case 'activate-settings-ui':
+                document.body.classList.toggle('settings-open')
                 break;
         }
     });
-});*/
+});

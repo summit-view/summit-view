@@ -16,6 +16,7 @@
         width 100%
     &.is-dragging
         cursor grabbing
+        z-index 2
         .content
             box-shadow 0 0 10px rgba(0, 0, 0, .7)
             transform rotate(5deg)
@@ -41,12 +42,12 @@
         transition opacity .3s ease
         .width
         .height
-            background rgba(black, .10)
+            background rgba(black, .50)
             position absolute
             margin unit($gutter, 'px')
             i
                 &:hover
-                    background rgba(black, .10)
+                    background rgba(black, .50)
                     cursor pointer
         .width
             width 36px

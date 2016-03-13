@@ -1,0 +1,60 @@
+@require './settings'
+
+/**
+ * sizes    hash-list with key -> value
+ * step     step-size (px)
+ * prefix   prefix all classes, usefull for breakpoints
+ */
+makeSpacing(sizes, step = 10, prefix = '')
+    // define direction functions
+    t(rule, size, u)
+        {rule}-top (u ? unit(size, u) : size)
+    r(rule, size, u)
+        {rule}-right (u ? unit(size, u) : size)
+    b(rule, size, u)
+        {rule}-bottom (u ? unit(size, u) : size)
+    l(rule, size, u)
+        {rule}-left (u ? unit(size, u) : size)
+    v(rule, size, u)
+        t(rule, size, u)
+        b(rule, size, u)
+    h(rule, size, u)
+        r(rule, size, u)
+        l(rule, size, u)
+    a(rule, size, u)
+        {rule} (u ? unit(size, u) : size)
+
+    // loop all directions
+    for n in a v h t r b l
+        // loop all sizes
+        for m in sizes
+            if( sizes[m] >= 0 )
+                .{prefix}p{n}{m}
+                    n(padding, (sizes[m]*step), "px")
+            .{prefix}m{n}{m}
+                n(margin, (sizes[m]*step), "px")
+        .{prefix}m{n}a
+            n(margin, auto, false)
+
+/*
+    Usage: {shorthand for rule}{shorthand for direction}{integer-index}
+
+    {shorthand for rule}
+    p - padding
+    m - margin
+
+    {shorthand for direction}
+    t - top
+    r - right
+    b - bottom
+    l - left
+    v - vertical
+    h - horizontal
+    a - all
+
+    {integer-index}
+    [x-y]
+
+*/
+
+makeSpacing($spacingSizes, $spacingStep, '')

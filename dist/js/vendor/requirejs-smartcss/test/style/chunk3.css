@@ -1,0 +1,12 @@
+#foo {
+    background: url('images/temp.png');
+}
+
+#picard {
+    background: url("images/temp2.png");
+}
+
+#locutos {
+    background: url(images/temp3.png);
+}
+

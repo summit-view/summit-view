@@ -1,0 +1,26 @@
+<!DOCTYPE HTML> <html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>Test Page</title>
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" type="text/css" charset="utf-8" />
+</head>
+<body>
+
+    <!-- Required for browser reporter -->
+    <div id="mocha"></div>
+
+    <!-- mocha -->
+    <script src="../node_modules/mocha/mocha.js" type="text/javascript" charset="utf-8"></script>
+    <script>mocha.setup('bdd')</script>
+
+    <script src="../node_modules/grunt-mocha/phantomjs/bridge.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="../node_modules/chai/chai.js" type="text/javascript" charset="utf-8"></script>
+    <script>chai.should();</script>
+
+    <script type="text/javascript" data-main="scripts/test" src="scripts/lib/require.js" charset="utf-8"></script>
+
+    <div id="test-content"></div>
+
+</body>
+</html>

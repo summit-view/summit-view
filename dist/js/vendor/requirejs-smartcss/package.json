@@ -1,0 +1,39 @@
+{
+  "name": "requirejs-smartcss",
+  "version": "0.3.6",
+  "description": "Requirejs plugin for loading css, invalidating static content refered from css files and unloading css when needed",
+  "main": "smartcss.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": "",
+  "keywords": [
+    "requirejs",
+    "css"
+  ],
+  "author": "camilo tapia <camilo.tapia@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "mocha": "~1.13.0",
+    "should": "~2.0.1",
+    "grunt-simple-mocha": "~0.4.0",
+    "requirejs": "~2.1.9",
+    "cheerio": "~0.12.3",
+    "node-phantom": "~0.2.4",
+    "phantom": "~0.5.4",
+    "connect": "~2.9.1",
+    "grunt-mocha": "~0.4.1",
+    "chai": "~1.8.1",
+    "grunt-requirejs": "~0.4.0"
+  },
+  "volo": {
+    "dependencies": {
+      "text": "requirejs/text"
+    },
+    "type": "directory"
+  }
+}

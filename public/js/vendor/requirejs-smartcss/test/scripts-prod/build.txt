@@ -1,0 +1,9 @@
+
+test-module.js
+----------------
+/Users/camilo/Projects/requirejs-smartcss/text.js
+/Users/camilo/Projects/requirejs-smartcss/smartcss.js
+css!style/chunk1.css
+css!style/chunk2.css
+css!style/chunk3.css
+test-module.js

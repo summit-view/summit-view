@@ -6,10 +6,10 @@ html
         link(rel="stylesheet" href="/theme/style.css")
         script(src="/socket.io/socket.io.js")
     body
-        #container
+        #container.layer-1
             .panel-sizer
             each panel, index in panels
-                div.panel(data-panel="#{panel.id}" data-panel-x="2" data-panel-y="2" tabindex="#{index}")
+                .panel(class="#{panel.id}" data-panel="#{panel.id}" data-panel-x="2" data-panel-y="2" tabindex="#{index}")
                     .content
                     .configure
                         .width
@@ -18,7 +18,29 @@ html
                         .height
                             i.fa.fa-chevron-up(data-action="compress-height")
                             i.fa.fa-chevron-down(data-action="expand-height")
-        //#toolbar
+        #settings-overlay.layer-2
+            #settings-container.mv8.mha.pa6
+                each panelSettings, key in settings
+                    form(id="#{key}")
+                        h1.mb3.
+                            #{key}
+                        each setting in panelSettings.settings
+                            div.setting.mb3
+                                label.block.mb2(for="#{setting.name}")
+                                    if setting.icon
+                                        i.fa.fa-fw(class="fa-#{setting.icon}")
+                                    span.
+                                        #{setting.label}
+                                case setting.type
+                                    when 'text'
+                                        input.block.pa3(type="text" name="#{setting.name}" value="#{setting.value}")
+                                if setting.instructions
+                                    div.instructions.mt2.
+                                        #{setting.instructions}
+                        div.text-center
+                            div.save-settings-control.button.uc(data-save-settings-for="#{key}").
+                                Save
+        #toolbar.layer-3
             div.toolbar-control(data-action="activate-settings-ui")
                 i.fa.fa-cog.fa-2x
         script(src="/dist/js/app-bundle.js")
