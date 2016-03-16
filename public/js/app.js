@@ -159,7 +159,7 @@ _.each(saveSettingsControls, function(saveSettingsControl) {
         var data = getFormData(document.querySelector('form#' + settingsFor));
 
         xhr.post('/' + settingsFor + '/settings', {json: data}, function(err, res) {
-            console.log(res);
+            //console.log(res);
         });
     });
 });
