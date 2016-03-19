@@ -115,7 +115,7 @@ module.exports.panels = function(ps) {
 };
 
 module.exports.theme = function(t) {
-    theme = ( t == 'dark' || t == 'light' ) ? __dirname + '/themes/' + t : t;
+    theme = ( t == 'dark' || t == 'light' || t == 'summit' ) ? __dirname + '/themes/' + t : t;
 };
 
 module.exports.listen = function(port) {
@@ -131,10 +131,12 @@ module.exports.listen = function(port) {
 
     app.use('/dist', express.static(__dirname + '/dist'));
 
-    app.use('/theme', express.static(theme || __dirname + '/themes/dark'));
+    app.use('/theme', express.static(theme || __dirname + '/themes/summit'));
+
+    app.use('/static', express.static('./.static'));
 
     // load db
-    db = new Datastore({filename: config.datastore || './.config/nedb-data/summit-view.db', autoload: true});
+    db = new Datastore({filename: './.config/nedb-data/summit-view.db', autoload: true});
 
     // listen
     port = port || config.port || 3000;
