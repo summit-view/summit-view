@@ -18,13 +18,20 @@
         cursor grabbing
         z-index 2
         .content
+        .loading
             box-shadow 0 0 10px rgba(0, 0, 0, .7)
             transform rotate(5deg)
     &.is-positioning-post-drag
         z-index 2
+    &.is-loading
+        .loading
+            opacity 1
+            .loading-icon
+                transform scale(1)
 
     .content
     .configure
+    .loading
         position absolute
         top 0
         right 0
@@ -36,6 +43,17 @@
         overflow-y scroll
         transition all .2s
         margin unit($gutter, 'px')
+
+    .loading
+        margin unit($gutter, 'px')
+        display flex
+        align-items center
+        justify-content center
+        opacity 0
+        transition all .3s
+        .loading-icon
+            transform scale(2)
+            transition all .3s
 
     .configure
         opacity 0

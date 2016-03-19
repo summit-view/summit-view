@@ -9,8 +9,14 @@ html
         #container.layer-1
             .panel-sizer
             each panel, index in panels
-                .panel(class="#{panel.id}" data-panel="#{panel.id}" data-panel-x="2" data-panel-y="2" tabindex="#{index}")
+                .panel.is-loading(class="#{panel.id}" data-panel="#{panel.id}" data-panel-x="2" data-panel-y="2" tabindex="#{index}")
                     .content
+                    if panel.branding
+                        .loading(class="bg-#{panel.branding.color.background}")
+                            div.text-center
+                                if panel.branding && panel.branding.icon && panel.branding.icon.fa
+                                    i.loading-icon.fa(class="fa-#{panel.branding.icon.fa} fa-5x #{panel.branding.color.icon}")
+                                div.message.ph4.pt2(class="#{panel.branding.color.text}")
                     .configure
                         .width
                             i.fa.fa-chevron-left(data-action="compress-width")
