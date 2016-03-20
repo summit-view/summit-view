@@ -15,7 +15,7 @@ html
                         .loading(class="bg-#{panel.branding.color.background}")
                             div.text-center
                                 if panel.branding && panel.branding.icon && panel.branding.icon.fa
-                                    i.loading-icon.fa(class="fa-#{panel.branding.icon.fa} fa-5x #{panel.branding.color.icon}")
+                                    i.loading-icon.fa.fa-fw.fa-5x(class="fa-#{panel.branding.icon.fa} #{panel.branding.color.icon}")
                                 div.message.ph4.pt2(class="#{panel.branding.color.text}")
                     .configure
                         .width
@@ -25,27 +25,43 @@ html
                             i.fa.fa-chevron-up(data-action="compress-height")
                             i.fa.fa-chevron-down(data-action="expand-height")
         #settings-overlay.layer-2
-            #settings-container.mv8.mha.pa6
+            #settings-container.relative
+                ul#settings-menu.absolute.stretch-h.layer--1.pt6
+                    each panelSettings, key in settings
+                        if panels[key].branding
+                            li(class="bg-#{panels[key].branding.color.background}")
+                                a.block.pa3(href="\##{[key]}-settings")
+                                    i.loading-icon.fa.fa-fw.fa-3x(class="fa-#{panels[key].branding.icon.fa} #{panels[key].branding.color.icon}")
+                        else
+                            li(class="bg-dark-gray")
+                                a.block.pa3(href="\##{[key]}-settings")
+                                    i.loading-icon.fa.fa-fw.fa-3x(class="fa-cog clouds")
                 each panelSettings, key in settings
-                    form(id="#{key}")
-                        h1.mb3.
-                            #{key}
+                    - var bg = ( panels[key].branding ) ? 'bg-' + panels[key].branding.color.background : 'bg-dark-gray'
+                    - var color = ( panels[key].branding ) ? panels[key].branding.color.text : 'clouds'
+                    form.settings-panel.pa12(id="#{key}-settings" data-panel="#{key}" class="#{bg} #{color}")
+                        div.text-center.mb12
+                            if panels[key].branding
+                                i.icon.fa.fa-fw.fa-5x(class="fa-#{panels[key].branding.icon.fa} #{panels[key].branding.color.icon}")
+                                h3.mt4.
+                                    #{key}
+                            else
+                                h3.
+                                    #{key}
                         each setting in panelSettings.settings
-                            div.setting.mb3
-                                label.block.mb2(for="#{setting.name}")
-                                    if setting.icon
-                                        i.fa.fa-fw(class="fa-#{setting.icon}")
-                                    span.
+                            if ['text', 'number'].indexOf(setting.type) > -1
+                                div.setting.mb6
+                                    label.block.mb2(for="#{setting.name}").
                                         #{setting.label}
-                                case setting.type
-                                    when 'text'
-                                    when 'number'
-                                        input.block.pa3(type="#{setting.type}" name="#{setting.name}" value="#{setting.value}")
-                                if setting.instructions
-                                    div.instructions.mt2.
-                                        #{setting.instructions}
+                                    case setting.type
+                                        when 'text'
+                                        when 'number'
+                                            input.block.pa3(type="#{setting.type}" name="#{setting.name}" value="#{setting.value}")
+                                    if setting.instructions
+                                        div.instructions.mt2.
+                                            #{setting.instructions}
                         div.text-center
-                            div.save-settings-control.button.uc(data-save-settings-for="#{key}").
+                            div.save-settings-control.button.mha.uc(data-save-settings-for="#{key}-settings").
                                 Save
         #toolbar.layer-3
             div.toolbar-control(data-action="activate-settings-ui")

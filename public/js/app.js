@@ -86,13 +86,13 @@ var savePanelSettings = function() {
 
     for (var i = 0, ii = itemElems.length; i < ii; i++) {
         panelSettings[i] = {
-            tabindex: itemElems[i].getAttribute('tabindex'),
+            panel: itemElems[i].getAttribute('data-panel'),
             x: itemElems[i].getAttribute('data-panel-x'),
             y: itemElems[i].getAttribute('data-panel-y'),
         };
     }
 
-    // save tabindex ordering
+    // save panel ordering
     localStorage.setItem('panelSettings', JSON.stringify(panelSettings));
 };
 
@@ -102,20 +102,20 @@ var initPanels = function(cb) {
     if(storedPanelSettings) {
         storedPanelSettings = JSON.parse(storedPanelSettings);
 
-        // create a hash of items by their tabindex
-        var itemsByTabIndex = {};
-        var tabIndex;
+        // create a hash of items
+        var itemsByPanel = {};
+        var panel;
 
         for(var i = 0, ii = pckry.items.length; i < ii; i++) {
             var item = pckry.items[i];
-            tabIndex = item.element.getAttribute('tabindex');
-            itemsByTabIndex[tabIndex] = item;
+            panel = item.element.getAttribute('data-panel');
+            itemsByPanel[panel] = item;
         }
 
         // overwrite packery item order
         for (var i = 0, ii = storedPanelSettings.length; i < ii; i++ ) {
-            tabIndex = storedPanelSettings[i].tabindex;
-            var item = itemsByTabIndex[ tabIndex ];
+            panel = storedPanelSettings[i].panel;
+            var item = itemsByPanel[panel];
 
             if( item ) {
                 pckry.items[i] = item;
@@ -155,11 +155,17 @@ var saveSettingsControls = document.querySelectorAll('.save-settings-control');
 
 _.each(saveSettingsControls, function(saveSettingsControl) {
     saveSettingsControl.addEventListener('click', function() {
-        var settingsFor = saveSettingsControl.getAttribute('data-save-settings-for');
-        var data = getFormData(document.querySelector('form#' + settingsFor));
+        var settingsSection = saveSettingsControl.getAttribute('data-save-settings-for');
+        var form = document.querySelector('form#' + settingsSection);
+        form.classList.add('saving');
+        var data = getFormData(form);
+        var settingsFor = form.getAttribute('data-panel');
 
         xhr.post('/' + settingsFor + '/settings', {json: data}, function(err, res) {
             //console.log(res);
+            setTimeout(function() {
+                form.classList.remove('saving');
+            }, 2000);
         });
     });
 });

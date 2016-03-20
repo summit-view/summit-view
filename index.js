@@ -6,7 +6,7 @@ var url = require('url');
 var Datastore = require('nedb');
 var bodyParser = require('body-parser');
 var Q = require('q')
-var db, theme, config, registeredSettings = {}, panels = [];
+var db, theme, config, registeredSettings = {}, panels = {};
 
 module.exports.use = function(cfg) {
     config = cfg;
@@ -106,7 +106,9 @@ module.exports.panels = function(ps) {
             return Q.all(initializedPanels);
         })
         .then(function(ips) {
-            panels = ips;
+            ips.forEach(function(panel) {
+                panels[panel.id] = panel;
+            });
             return true;
         })
         .catch(function(err) {

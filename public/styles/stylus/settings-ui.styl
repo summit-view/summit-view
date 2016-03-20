@@ -7,20 +7,78 @@
     background rgba(black, .7)
     display none
     #settings-container
-        width 50%
+        width 20%
+        min-width 500px
         background white
         color black
+        min-height 50%
     input
         width 100%
+        appearance none
+        border none
+        background rgba(#000, .1)
+        color inherit
+        font-size 16px
+        font-family monospace
+        font-weight bold
     .button
-        padding 10px 20px
-        border 3px solid black
+        appearance none
+        background rgba(#000, .2)
+        color inherit
+        border none
+        padding 15px 60px
+        display inline-block
         &:hover
             cursor pointer
+    .instructions
+        font-style italic
+        font-size .75em
+        opacity .5
+    #settings-menu
+        transform translate3d(-91px, 0, 0)
+    .settings-panel
+        display none
+        min-height 900px
+        &:last-child
+        &:target
+            display block
+            ~
+                .settings-panel
+                    &:last-child
+                        display none
+        &.saving
+            .icon
+                backface-visibility visible
+                animation summit-view-saving-flip 1s ease
+                animation-iteration-count infinite
 
 .settings-open
     #settings-overlay
-        display block
+        display flex
+        align-items center
+        justify-content center
     #container
         transition filter .3s ease
         filter blur(6px)
+    #toolbar
+        .toolbar-control
+            &[data-action="activate-settings-ui"]
+                opacity 1
+
+
+@keyframes summit-view-saving-flip
+    from
+        transform perspective(400px) rotate3d(0, 1, 0, -360deg)
+        animation-timing-function ease-out
+    40%
+        transform perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg)
+        animation-timing-function ease-out
+    50%
+        transform perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg)
+        animation-timing-function ease-in
+    80%
+        transform perspective(400px) scale3d(.95, .95, .95)
+        animation-timing-function ease-in
+    to
+        transform perspective(400px)
+        animation-timing-function ease-in
